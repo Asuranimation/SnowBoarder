@@ -8,24 +8,22 @@ public class UiManager : MonoBehaviour
     [SerializeField] FinishLine finishLine;
     [SerializeField] CrachDetector crachDetector;
 
+    [SerializeField] float delayShowUI = 1f;
+
     private void Start()
     {
-        finishLine.finished += OnFinishLineTriggered;
-        crachDetector.crach += OnCrachTriggered;
+        finishLine.OnFinishedLineTriggered += delegate { ShowUICondition(true); };
+        crachDetector.OnCrachTriggered += delegate { ShowUICondition(false); };
     }
 
-    private void OnFinishLineTriggered()
+    void ShowUICondition(bool value)
     {
-        ShowUI(true);
+        StartCoroutine(ShowUICourotine(value));
     }
 
-    private void OnCrachTriggered()
+    IEnumerator ShowUICourotine(bool state)
     {
-        ShowUI(false);
-    }
-
-    void ShowUI(bool state)
-    {
+        yield return new WaitForSeconds(delayShowUI);
         if (state)
         {
             winCondition.SetActive(true);

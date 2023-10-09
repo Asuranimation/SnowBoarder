@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] PlayerController playerController;
     [SerializeField] SurfaceEffector2D surfaceEffector;
     [SerializeField] FinishLine finishLine;
     [SerializeField] CrachDetector crachDetector;
+    [SerializeField] ParticleSystem finishEffect,crachEffect;
     [SerializeField] float timeToPlay;
 
-    void Start()
+    private void OnEnable()
     {
-        finishLine.finished += StatePlayerFinish;
-        crachDetector.crach += StatePlayerCrach;
+        finishLine.OnFinishedLineTriggered += StatePlayerFinish;
+        crachDetector.OnCrachTriggered += StatePlayerCrach;
+    }
+    private void OnDisable()
+    {
+        finishLine.OnFinishedLineTriggered -= StatePlayerFinish;
+        crachDetector.OnCrachTriggered -= StatePlayerCrach;
     }
 
     void StatePlayerFinish()
@@ -28,12 +35,17 @@ public class GameManager : MonoBehaviour
     IEnumerator StateFinishedCourotine()
     {
         surfaceEffector.enabled = false;
+        playerController.enabled = false;
+        finishEffect.Play();
         yield return new WaitForSeconds(timeToPlay);
     }
 
     IEnumerator StateCrachCourotine()
     {
         surfaceEffector.enabled = false;
+        playerController.enabled = false;
+        crachEffect.Play();
+        playerController.SetTorqueValue(0f);
         yield return new WaitForSeconds(timeToPlay);
     }
 

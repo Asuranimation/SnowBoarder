@@ -15,7 +15,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float movement = Input.GetAxis("Horizontal");
-        rb.AddTorque(-movement * torqueAmount);
+        float valueTorque = torqueAmount * 100f;
+        rb.AddTorque(-movement * valueTorque * Time.deltaTime);
     }
 
+    public float SetTorqueValue(float value)
+    {
+        return torqueAmount = value;
+    }
 }

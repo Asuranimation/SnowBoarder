@@ -13,6 +13,7 @@ public class Booster : MonoBehaviour
     {
         normalSpeed = surfaceEffector.speed;
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
