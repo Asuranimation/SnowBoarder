@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] float torqueAmount = 1f;
     Rigidbody2D rb;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -16,4 +17,5 @@ public class PlayerController : MonoBehaviour
         float movement = Input.GetAxis("Horizontal");
         rb.AddTorque(-movement * torqueAmount);
     }
+
 }
