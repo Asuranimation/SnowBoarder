@@ -6,22 +6,35 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] SurfaceEffector2D surfaceEffector;
     [SerializeField] FinishLine finishLine;
+    [SerializeField] CrachDetector crachDetector;
     [SerializeField] float timeToPlay;
 
     void Start()
     {
-        finishLine.finished += RunStateSurfaceEffector;
+        finishLine.finished += StatePlayerFinish;
+        crachDetector.crach += StatePlayerCrach;
     }
 
-    void RunStateSurfaceEffector()
+    void StatePlayerFinish()
     {
-        StartCoroutine(StateSurfaceEffector());
+        StartCoroutine(StateFinishedCourotine());
     }
 
-    IEnumerator StateSurfaceEffector()
+    void StatePlayerCrach()
+    {
+        StartCoroutine(StateCrachCourotine());
+    }
+
+    IEnumerator StateFinishedCourotine()
     {
         surfaceEffector.enabled = false;
         yield return new WaitForSeconds(timeToPlay);
-        surfaceEffector.enabled = true;
     }
+
+    IEnumerator StateCrachCourotine()
+    {
+        surfaceEffector.enabled = false;
+        yield return new WaitForSeconds(timeToPlay);
+    }
+
 }

@@ -11,7 +11,6 @@ public class FinishLine : MonoBehaviour
     public event Action finished;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        playerPosition.position = spawnPosition.position;
         Debug.Log("SelamatAndaMenang");
         finished?.Invoke();
     }
