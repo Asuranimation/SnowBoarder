@@ -43,3 +43,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Cloud
+    uniqueID: 1829889301
+    locked: 0
+  - name: ObjectEnvi
+    uniqueID: 4229506951
+    locked: 0
+  - name: Player
+    uniqueID: 1412963639
+    locked: 0
+  - name: Ground
+    uniqueID: 639805955
+    locked: 0
