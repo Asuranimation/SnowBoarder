@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CrachDetector : MonoBehaviour
 {
-    public event Action OnCrachTriggered;
+    public event Action OnCrashTriggered;
     Collider2D colider;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -14,7 +14,7 @@ public class CrachDetector : MonoBehaviour
         {
             colider = collision.GetComponent<Collider2D>();
             colider.isTrigger = false;
-            OnCrachTriggered?.Invoke(); // keGm
+            OnCrashTriggered?.Invoke(); // keGm
         }
     }
 

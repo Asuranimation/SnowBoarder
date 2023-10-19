@@ -19,12 +19,12 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         finishLine.OnFinishedLineTriggered += StatePlayerFinish;
-        crachDetector.OnCrachTriggered += StatePlayerCrach;
+        crachDetector.OnCrashTriggered += StatePlayerCrash;
     }
     private void OnDisable()
     {
         finishLine.OnFinishedLineTriggered -= StatePlayerFinish;
-        crachDetector.OnCrachTriggered -= StatePlayerCrach;
+        crachDetector.OnCrashTriggered -= StatePlayerCrash;
     }
 
     void StatePlayerFinish()
@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void StatePlayerCrach()
+    void StatePlayerCrash()
     {
         if (hasCrashed)
         {

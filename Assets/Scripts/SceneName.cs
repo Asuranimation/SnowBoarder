@@ -8,5 +8,4 @@ public static class SceneName
     public const string MAIN_MENU = "01_MainMenu";
     public const string LEVEL_01 = "02_Level_01";
     public const string LEVEL_02 = "03_Level_02";
- 
 }

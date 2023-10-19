@@ -13,7 +13,7 @@ public class UiManager : MonoBehaviour
     private void Start()
     {
         finishLine.OnFinishedLineTriggered += delegate { ShowUICondition(true); };
-        crachDetector.OnCrachTriggered += delegate { ShowUICondition(false); };
+        crachDetector.OnCrashTriggered += delegate { ShowUICondition(false); };
     }
 
     void ShowUICondition(bool value)
